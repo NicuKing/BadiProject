@@ -46,7 +46,13 @@ public class BadisActivity extends AppCompatActivity {
         final ArrayList<ArrayList<String>> allBadis = BadiData.allBadis(getApplicationContext());
         Set<String> badityp = new TreeSet<>();
         for (ArrayList<String> b : allBadis) {
-            badityp.add(b.get(2));
+            if(badityp.add(b.get(1))) {
+                badityp.add(b.get(1));
+            } else if(b.get(3) != "") {
+                badityp.add(b.get(1)+" - "+b.get(3));
+            } else {
+                badityp.add(b.get(1)+" - "+b.get(4)+" "+b.get(5));
+            }
         }
         badiliste.addAll(badityp);
         badis.setAdapter(badiliste);
@@ -54,7 +60,7 @@ public class BadisActivity extends AppCompatActivity {
         AdapterView.OnItemClickListener mListClickedHandler = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), BadisActivity.class);
+                Intent intent = new Intent(getApplicationContext(), BadiDetailsAcitivity.class);
                 String selected = parent.getItemAtPosition(position).toString();
                 //kleine Infobox anzeigne
                 Toast.makeText(BadisActivity.this, selected, Toast.LENGTH_SHORT).show();
