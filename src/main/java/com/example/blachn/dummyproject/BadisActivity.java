@@ -60,7 +60,7 @@ public class BadisActivity extends AppCompatActivity {
         AdapterView.OnItemClickListener mListClickedHandler = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), BadiDetailsAcitivity.class);
+                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
                 String selected = parent.getItemAtPosition(position).toString();
                 //kleine Infobox anzeigne
                 Toast.makeText(BadisActivity.this, selected, Toast.LENGTH_SHORT).show();
